@@ -1,0 +1,56 @@
+# Example settings for Backend (on Cloud Run).
+# Replace all placeholder values with your actual configuration.
+# See https://firebase.google.com/docs/app-hosting/configure#cloud-run
+runConfig:
+  minInstances: 0
+  # maxInstances: 100
+  # concurrency: 80
+  # cpu: 1
+  # memoryMiB: 512
+
+env:
+  # Public config used on client and server
+  - variable: NEXT_PUBLIC_WHOP_APP_ID
+    value: YOUR_WHOP_APP_ID
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_WHOP_COMPANY_ID
+    value: YOUR_WHOP_COMPANY_ID
+    availability:
+      - BUILD
+      - RUNTIME
+
+  # Firebase config
+  - variable: FIREBASE_PROJECT_ID
+    value: YOUR_FIREBASE_PROJECT_ID
+    availability:
+      - RUNTIME
+      - BUILD
+  - variable: FIREBASE_STORAGE_BUCKET
+    value: YOUR_FIREBASE_STORAGE_BUCKET
+    availability:
+      - RUNTIME
+      - BUILD
+
+  # Secrets (Cloud Secret Manager references)
+  - variable: WHOP_API_KEY
+    secret: YOUR_WHOP_API_KEY_SECRET_NAME
+    availability:
+      - RUNTIME
+      - BUILD
+  - variable: WHOP_WEBHOOK_SECRET
+    secret: YOUR_WHOP_WEBHOOK_SECRET_NAME
+    availability:
+      - RUNTIME
+      - BUILD
+  - variable: FIREBASE_CLIENT_EMAIL
+    secret: YOUR_FIREBASE_CLIENT_EMAIL_SECRET_NAME
+    availability:
+      - RUNTIME
+      - BUILD
+  - variable: FIREBASE_PRIVATE_KEY
+    secret: YOUR_FIREBASE_PRIVATE_KEY_SECRET_NAME
+    availability:
+      - RUNTIME
+      - BUILD
