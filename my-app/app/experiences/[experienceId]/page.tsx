@@ -128,7 +128,9 @@ export default function HomePage({ params }: ExperiencePageProps) {
           </div>
           <div className="grid grid-cols-1 gap-2">
             {products.map(p => (
-              <ProductCard key={p.id} product={p} />
+              <Link key={p.id} href={`/experiences/${experienceId}/product/${p.id}`}>
+                <ProductCard product={p} />
+              </Link>
             ))}
           </div>
         </section>
