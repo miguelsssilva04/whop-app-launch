@@ -1,12 +1,13 @@
 'use client';
 import Link from 'next/link';
-import ProductCard from '@/src/components/ProductCard';
-import { launchingNow, products } from '@/src/data/mock';
+import ProductCard from '@/app/components/ProductCard';
+import {  products } from '@/app/lib/mock';
 import { useState, useEffect } from 'react';
 import { Heading, Text, Button, IconButton, Callout } from '@whop/react/components';
 import { useAuth } from '@/app/contexts/AuthContext';
 import XIcon from '@/app/components/Icons/X';
 import { useRouter } from 'next/navigation';
+import Countdown from '@/app/components/Countdown';
 
 interface ExperiencePageProps {
   params: Promise<{ experienceId: string }>;
@@ -110,10 +111,22 @@ export default function HomePage({ params }: ExperiencePageProps) {
         </div>
 
         <section className="mt-10 max-w-4xl mx-auto" >
-          <div>
-            <Heading as="h2" size="6">Launching Now</Heading>
+          <div className='flex flex-row items-center justify-between mb-4'>
+            <div className="flex flex-row items-center gap-2">
+              <div className="inline-grid *:[grid-area:1/1]">
+                <div className="status status-lg bg-orange-500 animate-ping"></div>
+                <div className="status status-lg bg-orange-500"></div>
+              </div>
+              <Heading as="h2" size="6">Launching Now</Heading>
+            </div>
+            <div>
+              <Text as="p" size="2" weight='semi-bold' align='center'>
+                Launch ends in
+              </Text>
+              <Countdown endDate={'12/12/2025'} />
+            </div>
           </div>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 gap-2">
             {products.map(p => (
               <ProductCard key={p.id} product={p} />
             ))}

@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import ProductCard from '@/src/components/ProductCard';
-import { userProducts } from '@/src/data/mock';
+import ProductCard from '@/app/components/ProductCard';
+import { userProducts } from '@/app/lib/mock';
 
 export default function ProfilePage() {
   return (
