@@ -3,13 +3,20 @@ import { Avatar, Heading } from "@whop/react/components";
 import { Card, IconButton, Text } from "frosted-ui";
 import ChatTearDropDuotone from "./Icons/ChatTearDropDuotone";
 import { ArrowUpCircleDuoTone } from "./Icons/ArrowUpCircleDuoTone";
+import { isUpvoted, upvote, removeUpvote } from "@/app/lib/upvoteCache";
+import { useEffect, useState } from "react";
 
 
-type Props = { product: Product };
+type Props = { product: Product; onCardClick?: () => void; onCommentClick?: () => void };
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ product, onCardClick, onCommentClick }: Props) {
+  const [upvoted, setUpvoted] = useState(false);
+  useEffect(() => {
+    setUpvoted(isUpvoted(product.id));
+  }, [product.id]);
   return (
-    <Card className="transition-shadow duration-400 hover:shadow-[0_0_20px_1px] hover:shadow-orange-500/25 cursor-pointer">
+    <Card className="transition-shadow duration-400 hover:shadow-[0_0_20px_1px] hover:shadow-orange-500/25 cursor-pointer" onClick={onCardClick}
+    >
       <div className="flex gap-4 p-2">
         <Avatar
           src={product.image}
@@ -29,13 +36,34 @@ export default function ProductCard({ product }: Props) {
           )}
         </div>
         <div className="flex gap-2 items-center">
-          <IconButton variant="surface" color="gray" size="4" style={{ flexDirection: "column" }}>
+          <IconButton
+            variant={upvoted ? "classic" : "surface"}
+            color={upvoted ? "orange" : "gray"}
+            size="4"
+            style={{ flexDirection: "column" }}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (upvoted) {
+                removeUpvote(product.id);
+                setUpvoted(false);
+              } else {
+                upvote(product.id);
+                setUpvoted(true);
+              }
+            }}
+          >
             <ArrowUpCircleDuoTone size={24} color="white" />
             <Text as="p" size="2" weight="light">
               {product.upvotes}
             </Text>
           </IconButton>
-          <IconButton variant="surface" color="gray" size="4" style={{ flexDirection: "column" }}>
+          <IconButton
+            variant="surface"
+            color="gray"
+            size="4"
+            style={{ flexDirection: "column" }}
+            onClick={(e) => { e.stopPropagation(); onCommentClick?.(); }}
+          >
             <ChatTearDropDuotone size={24} color="white" />
             <Text as="p" size="2" weight="light">
               {product.comments}

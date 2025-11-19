@@ -128,9 +128,12 @@ export default function HomePage({ params }: ExperiencePageProps) {
           </div>
           <div className="grid grid-cols-1 gap-2">
             {products.map(p => (
-              <Link key={p.id} href={`/experiences/${experienceId}/product/${p.id}`}>
-                <ProductCard product={p} />
-              </Link>
+              <ProductCard
+                key={p.id}
+                product={p}
+                onCardClick={() => router.push(`/experiences/${experienceId}/product/${p.id}`)}
+                onCommentClick={() => router.push(`/experiences/${experienceId}/product/${p.id}#comments`)}
+              />
             ))}
           </div>
         </section>

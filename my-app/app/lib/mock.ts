@@ -23,7 +23,37 @@ export const products: Product[] = [
     id: "p-1",
     name: "TaskBeacon",
     description: "Simple task lists with shareable, public boards.",
-    pageDescription: "TaskBeacon lets you create lightweight task lists that can be shared instantly with anyone. Build public boards for open projects or private lists for personal goals—no sign-up required to view. Perfect for freelancers, students, and small teams who need clarity without complexity.",
+    pageDescription: `TaskBeacon is the fastest way to turn ideas into action.
+
+**What you get:**
+- Unlimited public boards – share a link, no sign-up required
+- Unlimited private lists – keep personal goals under wraps
+- Real-time sync – changes appear instantly for every viewer
+- Markdown & checklists – rich formatting with zero learning curve
+- Mobile-first PWA – works offline, installs like a native app
+- One-click duplicate – fork any board and make it yours
+- Custom themes – light, dark, or your brand colors
+- Embeddable widgets – drop a board into Notion, Confluence, or your blog
+
+**Built for:**
+- Freelancers juggling client deliverables
+- Students organizing group projects
+- Remote teams running weekly sprints
+- Families planning vacations
+- Creators publishing public roadmaps
+
+**Power features:**
+⚡ Sub-task nesting – break big items into bite-size steps  
+⚡ Comment threads – discuss tasks without leaving the board  
+⚡ Due-date reminders – get gentle nudges via email or push  
+⚡ Activity feed – see who did what, when  
+⚡ CSV & JSON export – take your data anywhere  
+⚡ REST API – integrate with Zapier, Make, or your own stack
+
+**Zero friction:**
+No accounts, no passwords, no credit card. Create a board in 5 seconds, share it in 1. When you need more, upgrade in two clicks and keep every link alive.
+
+Join 40 000+ makers who replaced Trello, Google Docs, and sticky notes with one lightweight tool that just works.`,
     image: "/images/taskbeacon.webp",
     authorId: "user-1",
     category: "Productivity",
