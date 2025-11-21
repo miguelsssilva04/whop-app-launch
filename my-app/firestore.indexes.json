@@ -1,0 +1,15 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "launches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "openDate", "order": "ASCENDING" },
+        { "fieldPath": "__name__", "order": "ASCENDING" }
+      ],
+      "density": "SPARSE_ALL"
+    }
+  ],
+  "fieldOverrides": []
+}

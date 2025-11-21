@@ -25,6 +25,7 @@ export default function ProductCard({ product, onCardClick, onCommentClick }: Pr
           fallback={product.name.charAt(0)}
           className="h-16 w-16 rounded object-cover"
           variant="square"
+          color="orange"
         />
         <div className="flex-1">
           <Heading as="h3" size="4" weight="semi-bold">{product.name}</Heading>

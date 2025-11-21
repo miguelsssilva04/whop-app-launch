@@ -1,41 +1,21 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics, isSupported } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDKYfTuzYrf3kUuKTDYXAEFJFE4-M9WUZo",
-  authDomain: "remote-jobs-c30c5.firebaseapp.com",
-  projectId: "remote-jobs-c30c5",
-  storageBucket: "remote-jobs-c30c5.firebasestorage.app",
-  messagingSenderId: "1088169085291",
-  appId: "1:1088169085291:web:dc0a492cd6a6871964a42e",
-  measurementId: "G-VM25BVZFFV"
+  apiKey: "AIzaSyBVtQ0cjFcHb2D3MBOE0WtikSjYXV2wK1s",
+  authDomain: "whop-app-launch.firebaseapp.com",
+  projectId: "whop-app-launch",
+  storageBucket: "whop-app-launch.firebasestorage.app",
+  messagingSenderId: "322529504390",
+  appId: "1:322529504390:web:634f100c6f11741343f507",
+  measurementId: "G-VK1KGC4WTK"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Analytics only in browser environment
-let analytics;
-if (typeof window !== 'undefined') {
-  isSupported().then(supported => {
-    if (supported) {
-      analytics = getAnalytics(app);
-    }
-  });
-}
-
-// Initialize Firestore
-export const db = getFirestore(app);
-
-// Initialize Storage
-export const storage = getStorage(app);
-
-export { app, analytics };
-
+const analytics = getAnalytics(app);
