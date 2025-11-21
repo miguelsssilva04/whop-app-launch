@@ -1,6 +1,6 @@
 'use client';
 import UploadIcon from '@/app/components/Icons/Upload';
-import { Avatar, Button, Heading, Text, TextField, TextArea, SegmentedControlRadioGroup, Select } from '@whop/react/components';
+import { Avatar, Button, Heading, Text, TextField, TextArea, SegmentedControlRadioGroup, Select, Dialog } from '@whop/react/components';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { CATEGORIES } from '@/app/lib/types';
@@ -141,12 +141,7 @@ export default function SubmitPage({ params }: ExperiencePageProps) {
           <Heading as="h1" size="6">Submit Whop App</Heading>
         </header>
 
-        {submitted ? (
-          <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-green-800">
-            Product submitted (mock). It will appear after backend integration.
-          </div>
-        ) : (
-          <form className="space-y-4" onSubmit={onSubmit}>
+        <form className="space-y-4" onSubmit={onSubmit}>
             <div className="flex gap-4">
               <Avatar
                 src={form.logo}
@@ -238,7 +233,15 @@ export default function SubmitPage({ params }: ExperiencePageProps) {
               <Button color="orange" size="3" variant='classic' type="button" loading={isSubmitting} onClick={onSubmit}>Submit</Button>
             </div>
           </form>
-        )}
+        <Dialog.Root open={submitted}>
+          <Dialog.Content>
+            <Heading as="h2" size="4" weight="medium">Submission successful</Heading>
+            <Text as="p" size="3" color="gray" className="mt-2">Your app was added to the upcoming launch.</Text>
+            <div className="mt-4 flex justify-end">
+              <Button size="3" variant="classic" color="orange" onClick={handleBackClick} loading={isNavigating}>Go back home</Button>
+            </div>
+          </Dialog.Content>
+        </Dialog.Root>
       </div>
     </div>
   );
